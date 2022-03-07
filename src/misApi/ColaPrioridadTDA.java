@@ -8,14 +8,18 @@ public interface ColaPrioridadTDA {
     void acolarPrioridad(int x, int p);
 
     //elimina elemento con mayor prioridad, no debe estar vacia
-    void desacolar(int x);
+    void desacolar();
 
     //valor del dato de mayor prioridad, no debe estar vacia
-    int primero(int p);
+    int primero();
 
     //prioridad del valor... , no debe estar vacia
-    int prioridad(int x);
+    int prioridad();
 
     //indica si tiene elementos o no, debe estar iniciada
     boolean colaVacia();
+
+    void imprimirCola();
+
+    int longitud();
 }

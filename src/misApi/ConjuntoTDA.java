@@ -18,4 +18,7 @@ public interface ConjuntoTDA {
 
     //verdadero si x pertenece al conjunto, debe esta iniciado
     boolean pertenece(int x);
+
+    void imprimirConjunto();
+    
 }
