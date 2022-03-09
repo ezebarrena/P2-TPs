@@ -38,5 +38,17 @@ public class ColaCircular implements ColaTDA{
     public boolean colaVacia() {
         return (primero == ultimo);
     }
+
+    @Override
+    public void imprimir() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public int largo() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
     
 }

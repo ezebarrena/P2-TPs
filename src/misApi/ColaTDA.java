@@ -15,4 +15,8 @@ public interface ColaTDA {
 
     //indica si tiene elementos o no, debe estar iniciada
     boolean colaVacia();
+
+    void imprimir();
+
+    int largo();
 }

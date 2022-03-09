@@ -41,5 +41,20 @@ public class ColaTopeIni implements ColaTDA{
         
         return (cant == 0);
     }
+
+    @Override
+    public void imprimir() {
+        // TODO Auto-generated method stub
+        int i = 0;
+
+        while(i<cant){
+            System.out.println(contenedor[i]);
+            i++;
+        }
+    }
+
+    public int largo(){
+        return cant;
+    }
     
 }
