@@ -56,7 +56,13 @@ public class Conjunto implements ConjuntoTDA{
     @Override
     public boolean pertenece(int x) {
         
-        return false;
+        int i = 0;
+
+        while (i<cant && vector[i] != x){
+            i++;
+        }
+
+        return (i < cant);
     }
 
     @Override

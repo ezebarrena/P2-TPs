@@ -50,5 +50,11 @@ public class PilaAlt2 implements PilaAlt2TDA {
     public boolean pilaVacia() {
         return cant == 0;
     }
+
+    @Override
+    public void desapilar() {
+        
+        
+    }
     
 }
