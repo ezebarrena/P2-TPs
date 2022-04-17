@@ -1,7 +1,5 @@
 package misImplementacionesDinamicas;
 
-import javax.xml.XMLConstants;
-
 import misApi.PilaTDA;
 
 public class PilaDinamica implements PilaTDA{

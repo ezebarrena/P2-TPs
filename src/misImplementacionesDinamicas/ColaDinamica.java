@@ -24,7 +24,8 @@ public class ColaDinamica implements ColaTDA{
     public void acolar(int x) {
         Nodo aux = new Nodo();
         aux.info = x;
-
+        aux.sig = null;
+        
         if (ultimo != null){
             ultimo.sig = aux;
         }
