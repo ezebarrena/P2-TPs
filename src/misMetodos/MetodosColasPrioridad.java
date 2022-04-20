@@ -69,4 +69,61 @@ public class MetodosColasPrioridad {
             aux.desacolar();
         }
     }
+
+
+    public ColaPrioridadTDA unionColas (ColaPrioridadTDA c1, ColaPrioridadTDA c2){
+        ColaPrioridadTDA aux = new ColaPrioridadDinamica();
+        ColaPrioridadTDA colaUnida = new ColaPrioridadDinamica();
+        ColaPrioridadTDA colaRes = new ColaPrioridadDinamica();
+
+        colaUnida.inicializarCola();
+        aux.inicializarCola();
+        colaRes.inicializarCola();
+
+        pasarColaPColaP(c1, colaUnida);
+
+        //aca ambas colas quedan unidas
+        while (!c2.colaVacia()){
+            colaUnida.acolarPrioridad(c2.primero(), c2.prioridad());
+            c2.desacolar();
+        }
+
+        int valorTemporal;
+        int prioTemporal;
+
+
+        //aca me empiezo a fijar por sacar repetidos
+
+        while (!colaUnida.colaVacia()){
+            valorTemporal = colaUnida.primero();
+            prioTemporal = colaUnida.prioridad();
+            colaUnida.desacolar();
+
+            while (!colaUnida.colaVacia()){
+
+                if (valorTemporal == colaUnida.primero()){
+                    
+                    if (prioTemporal < colaUnida.prioridad()){
+                        prioTemporal = colaUnida.prioridad();
+                    }
+                    
+                    colaUnida.desacolar();
+                }
+
+                else{                
+                    aux.acolarPrioridad(colaUnida.primero(), colaUnida.prioridad());
+                    colaUnida.desacolar();
+                }
+
+            }
+            
+            pasarColaPColaP(aux, colaUnida);
+
+            colaRes.acolarPrioridad(valorTemporal, prioTemporal);
+
+        }
+
+        return colaRes;
+    
+    }
 }
