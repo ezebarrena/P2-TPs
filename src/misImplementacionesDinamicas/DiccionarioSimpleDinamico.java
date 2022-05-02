@@ -2,7 +2,6 @@ package misImplementacionesDinamicas;
 
 import misApi.ConjuntoTDA;
 import misApi.DiccionarioSimpleTDA;
-import misImplementacionesEstaticas.Conjunto;
 
 public class DiccionarioSimpleDinamico implements DiccionarioSimpleTDA{
 

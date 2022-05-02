@@ -5,60 +5,71 @@ import misApi.GrafoTDA;
 
 public class Grafo implements GrafoTDA {
 
-
-    private int [][] matriz;
+    static int n = 100;
+    private int [][] MAdy;
     private int [] etiquetas;
-    private int cant;
+    private int cantNodos;
 
     @Override
     public void inicializarGrafo() {
         // TODO Auto-generated method stub
-        matriz = new int [100][100];
-        etiquetas = new int [100];
-        cant = 0;
+        MAdy = new int [n][n];
+        etiquetas = new int [n];
+        cantNodos = 0;
     }
 
     @Override
     public void agregarVertice(int vert) {
         // TODO Auto-generated method stub
         
-        etiquetas[cant] = vert;
+        etiquetas[cantNodos] = vert;
 
-        for (int i = 0; i < cant; i++){
-            matriz[cant][i] = 0;
-            matriz[i][cant] = 0;
+        for (int i = 0; i < cantNodos; i++){
+            MAdy[cantNodos][i] = 0;
+            MAdy[i][cantNodos] = 0;
         }
 
-        cant ++;
+        cantNodos ++;
     }
 
     @Override
     public void eliminarVertice(int vert) {
         // TODO Auto-generated method stub
-        int pos = buscaPos(vert);
-        etiquetas[pos] = etiquetas[cant - 1];
+        int ind = Vert2Indice(vert);
 
-        for (int i = 0; i < cant; i++){
-            matriz[pos][i] = matriz[cant - 1][i];
-            matriz[i][pos] = matriz[i][cant - 1];
+        
+
+        for (int k = 0; k < cantNodos; k++){
+            MAdy[k][ind] = MAdy[k][cantNodos-1];
+            MAdy[ind][k] = MAdy[cantNodos-1][k];
         }
-        cant--;
+
+        etiquetas[ind] = etiquetas[cantNodos -1];
+        cantNodos--;
+    }
+
+    private int Vert2Indice(int v){
+        int i = cantNodos-1;
+        while (i>= 0 && etiquetas[i] != v){
+            i--;
+        }
+        return i;
     }
 
     @Override
     public void agregarArista(int origen, int destino, int peso) {
         // TODO Auto-generated method stub
-        int pos1 = buscaPos(origen);
-        int pos2 = buscaPos(destino);
-        matriz[pos1][pos2] = peso;
+        int o = Vert2Indice(origen);
+        int d = Vert2Indice(destino);
+        MAdy[o][d] = peso;
     }
 
     @Override
     public void eliminarArista(int origen, int destino) {
         // TODO Auto-generated method stub
-        int pos1 = buscaPos(origen);
-        int pos2 = buscaPos(destino);
-        matriz[pos1][pos2] = 0;
+        int o = Vert2Indice(origen);
+        int d = Vert2Indice(destino);
+        MAdy[o][d] = 0;
         
     }
 
@@ -69,9 +80,8 @@ public class Grafo implements GrafoTDA {
 
         verts.inicializarConjunto();
 
-        for (int i = 0; i< cant; i ++){
+        for (int i = 0; i< cantNodos; i ++){
             verts.agregar(etiquetas[i]);
-
         }
 
         return verts;
@@ -81,25 +91,18 @@ public class Grafo implements GrafoTDA {
     public int peso(int origen, int destino) {
         // TODO Auto-generated method stub
 
-        int pos1 = buscaPos(origen);
-        int pos2 = buscaPos(destino);
+        int o = Vert2Indice(origen);
+        int d = Vert2Indice(destino);
 
-        return matriz[pos1][pos2];
+        return MAdy[o][d];
     }
 
     @Override
     public boolean existeArista(int vert1, int vert2) {
         // TODO Auto-generated method stub
-        return peso(vert1, vert2) != 0;
-    }
+        int o = Vert2Indice(vert1);
+        int d = Vert2Indice(vert2);
 
-
-    private int buscaPos(int vertice){
-        int pos = 0;
-        while (etiquetas[pos] != vertice){
-            pos++;
-        }
-        return pos;
+        return MAdy[o][d] != 0;
     }
-    
 }

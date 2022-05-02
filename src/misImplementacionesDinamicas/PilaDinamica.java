@@ -4,12 +4,12 @@ import misApi.PilaTDA;
 
 public class PilaDinamica implements PilaTDA{
 
-    class Nodo{
+    class Nodo {
         int info;
         Nodo sig;
     }
-    Nodo primero;
 
+    Nodo primero;
 
     @Override
     public void inicializarPila() {

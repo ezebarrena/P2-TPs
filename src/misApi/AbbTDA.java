@@ -1,12 +1,11 @@
 package misApi;
 
-public interface AbbTDA {
-    void inicializarABB();
+public interface ABBTDA {
     int raiz ();
-    AbbTDA hijoIzq();
-    AbbTDA hijoDer();
-    void agregar(int x);
-    void eliminar (int x);
+    ABBTDA HijoIzq();
+    ABBTDA HijoDer();
     boolean arbolVacio();
-    boolean pertenece (int x);
+    void inicializarArbol();
+    void agregarElem(int x);
+    void eliminarElem(int x);
 }
